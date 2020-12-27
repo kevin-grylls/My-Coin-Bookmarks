@@ -1,26 +1,26 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { TabWrapper, TabItem } from './Style';
-import { STRINGS } from '../constants';
+import { STRINGS, ROUTES } from '../constants';
 
 export function Tab() {
-    const {
-        location: { pathname },
-    } = useHistory();
+  const {
+    location: { pathname },
+  } = useHistory();
 
-    const currentPage = () => pathname === '/';
+  const isMarketPage = () => pathname === '/market';
 
-    return (
-        <TabWrapper>
-            {STRINGS.TAB.map((name: string, idx: number) => {
-                const isActive = idx === 0 ? currentPage() : !currentPage();
+  return (
+    <TabWrapper>
+      {STRINGS.TAB.map((name: string, idx: number) => {
+        const isActive = idx === 0 ? isMarketPage() : !isMarketPage();
 
-                return (
-                    <TabItem active={isActive} key={`tab-${idx}`}>
-                        {name}
-                    </TabItem>
-                );
-            })}
-        </TabWrapper>
-    );
+        return (
+          <TabItem active={isActive} key={`tab-${idx}`}>
+            <Link to={ROUTES.TAB[idx + 1]}>{name}</Link>
+          </TabItem>
+        );
+      })}
+    </TabWrapper>
+  );
 }

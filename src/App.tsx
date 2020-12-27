@@ -6,19 +6,19 @@ import { theme } from './styles';
 import { Home } from './containers';
 
 function App() {
-    return (
-        <ThemeProvider theme={theme}>
-            <ContextProvider>
-                <Router>
-                    <Switch>
-                        <Route exact path="/">
-                            <Home />
-                        </Route>
-                    </Switch>
-                </Router>
-            </ContextProvider>
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={theme}>
+      <ContextProvider>
+        <Router>
+          <Switch>
+            <Route path={['/', '/bookmark', '*']}>
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </ContextProvider>
+    </ThemeProvider>
+  );
 }
 
 export default App;

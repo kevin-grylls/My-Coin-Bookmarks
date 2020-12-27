@@ -1,24 +1,28 @@
 import { useState, useEffect } from 'react';
 import { getMarketCurrencies } from '../api';
+import { useGlobalContext } from '../context';
 
 export function useCurrency() {
-    const [currency, setCurrency] = useState([]);
+  const { currencyType, page, displayRow } = useGlobalContext();
+  const [currency, setCurrency] = useState([]);
 
-    const fetchMarketCurrencies = async () => {
-        const result = await getMarketCurrencies({
-            vsCurrency: 'usd',
-            order: 'market_cap_desc',
-            perPage: 10,
-            page: 1,
-            sparkLine: false,
-        });
+  const fetchMarketCurrencies = async () => {
+    const result = await getMarketCurrencies({
+      vsCurrency: currencyType,
+      order: 'market_cap_desc',
+      perPage: displayRow,
+      page: page,
+      sparkLine: false,
+    });
 
-        setCurrency(result);
-    };
+    setCurrency(result);
+  };
 
-    useEffect(() => {
-        fetchMarketCurrencies();
-    }, []);
+  useEffect(() => {
+    console.log(currencyType);
+    console.log(displayRow);
+    fetchMarketCurrencies();
+  }, [currencyType, displayRow]);
 
-    return { currency, setCurrency };
+  return { currency };
 }
