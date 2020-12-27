@@ -24,8 +24,12 @@ describe('Global Context', () => {
 
   beforeEach(() => {
     contextValue = {
+      viewType: 'all',
+      currencyType: 'krw',
       page: 1,
       displayRow: 10,
+      setViewType: jest.fn(),
+      setCurrencyType: jest.fn(),
       setPage: jest.fn(),
       setDisplayRow: jest.fn(),
     };

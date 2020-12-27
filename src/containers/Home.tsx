@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Layout, Wrapper, Section } from './Style';
 import { Tab } from './Tab';
-import { Filters } from './Filters';
+import { Filter } from './Filter';
 
 const Table = lazy(() => import('./Table'));
 
@@ -19,7 +19,7 @@ export const Home = () => {
           <Section>
             <Switch>
               <Route path="/market">
-                <Filters />
+                <Filter />
                 <Suspense fallback={<div>Loading...</div>}>
                   <Table />
                 </Suspense>

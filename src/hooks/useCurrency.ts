@@ -19,8 +19,6 @@ export function useCurrency() {
   };
 
   useEffect(() => {
-    console.log(currencyType);
-    console.log(displayRow);
     fetchMarketCurrencies();
   }, [currencyType, displayRow]);
 

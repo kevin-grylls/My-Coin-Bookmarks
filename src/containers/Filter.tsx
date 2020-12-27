@@ -3,12 +3,12 @@ import { Select, FiltersWrapper } from './Style';
 import { STRINGS } from '../constants';
 import { useGlobalContext } from '../context';
 
-export function Filters() {
+export function Filter() {
   const { setViewType, setCurrencyType, setDisplayRow } = useGlobalContext();
 
   const handleViewType = (e: ChangeEvent<HTMLSelectElement>) => {
     switch (e.target.value) {
-      case STRINGS.SELECT.VIEW_TYPE[0]:
+      case STRINGS.FILTER.VIEW_TYPE[0]:
         setViewType('ALL');
         break;
       default:
@@ -19,7 +19,7 @@ export function Filters() {
 
   const handleCurrency = (e: ChangeEvent<HTMLSelectElement>) => {
     switch (e.target.value) {
-      case STRINGS.SELECT.CURRENCY[0]:
+      case STRINGS.FILTER.CURRENCY[0]:
         setCurrencyType('krw');
         break;
       default:
@@ -30,13 +30,13 @@ export function Filters() {
 
   const handleDisplayNumber = (e: ChangeEvent<HTMLSelectElement>) => {
     switch (e.target.value) {
-      case STRINGS.SELECT.LIST_NUMBER[0]:
+      case STRINGS.FILTER.LIST_NUMBER[0]:
         setDisplayRow(10);
         break;
-      case STRINGS.SELECT.LIST_NUMBER[1]:
+      case STRINGS.FILTER.LIST_NUMBER[1]:
         setDisplayRow(30);
         break;
-      case STRINGS.SELECT.LIST_NUMBER[2]:
+      case STRINGS.FILTER.LIST_NUMBER[2]:
         setDisplayRow(50);
         break;
       default:
@@ -46,22 +46,34 @@ export function Filters() {
 
   return (
     <FiltersWrapper>
-      <Select marginLeft={'auto'} onChange={handleViewType}>
-        {STRINGS.SELECT.VIEW_TYPE.map((name: string) => (
+      <Select
+        data-testid={'select-view-type'}
+        marginLeft={'auto'}
+        onChange={handleViewType}
+      >
+        {STRINGS.FILTER.VIEW_TYPE.map((name: string) => (
           <option key={`view-type-${name}`} value={name}>
             {name}
           </option>
         ))}
       </Select>
-      <Select marginLeft={'40px'} onChange={handleCurrency}>
-        {STRINGS.SELECT.CURRENCY.map((name: string) => (
+      <Select
+        data-testid={'select-currency-type'}
+        marginLeft={'40px'}
+        onChange={handleCurrency}
+      >
+        {STRINGS.FILTER.CURRENCY.map((name: string) => (
           <option key={`currency-${name}`} value={name}>
             {name}
           </option>
         ))}
       </Select>
-      <Select marginLeft={'40px'} onChange={handleDisplayNumber}>
-        {STRINGS.SELECT.LIST_NUMBER.map((name: string) => (
+      <Select
+        data-testid={'select-list-number'}
+        marginLeft={'40px'}
+        onChange={handleDisplayNumber}
+      >
+        {STRINGS.FILTER.LIST_NUMBER.map((name: string) => (
           <option key={`list-number-${name}`} value={name}>
             {name}
           </option>

@@ -12,7 +12,7 @@ interface GlobalContext {
 }
 
 const defaultValue: GlobalContext = {
-  viewType: 'ALL',
+  viewType: 'all',
   currencyType: 'krw',
   page: 1,
   displayRow: 10,
@@ -39,7 +39,6 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
   const setCurrencyType = (currencyType: string) => {
     setState((prevState) => {
-      console.log('currencyType:', currencyType);
       return {
         ...prevState,
         currencyType: currencyType,
@@ -66,7 +65,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const initialState = {
-    viewType: 'ALL',
+    viewType: 'all',
     currencyType: 'krw',
     page: 1,
     displayRow: 10,
