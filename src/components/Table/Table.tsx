@@ -1,22 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { TableWrapper, TableItem, Star } from './Style';
-import { STRINGS } from '../constants';
-import { useCurrency } from '../hooks';
-import { useGlobalContext } from '../context';
+import { STRINGS } from '../../constants';
 
-export default function Table() {
-  const { currencyType } = useGlobalContext();
-  const { currency } = useCurrency();
-
-  const handleClick = (id: string) => {
-    console.log(id);
-  };
-
+export function Table({
+  bookMark = [],
+  currency = [],
+  currencyType = 'krw',
+  onClick,
+}: {
+  bookMark: Array<string>;
+  currency: Array<any>;
+  currencyType: string;
+  onClick: (...args: any) => void;
+}) {
   const currencyMark = currencyType === 'usd' ? '$' : '₩';
-
-  useEffect(() => {
-    console.log('data', currency);
-  }, [currency]);
 
   return (
     <TableWrapper>
@@ -57,9 +54,9 @@ export default function Table() {
               <tr key={`currency-row-${symbol}-${idx}`}>
                 <TableItem align={'center'} color={'black'}>
                   <Star
-                    isSelected={true}
+                    isSelected={bookMark.includes(id)}
                     className={'fa fa-star'}
-                    onClick={(e) => handleClick(id)}
+                    onClick={(e) => onClick(id)}
                   />
                 </TableItem>
                 <TableItem align={'left'} color={'black'}>
@@ -70,8 +67,7 @@ export default function Table() {
                 </TableItem>
                 <TableItem align={'right'} color={'black'}>
                   <strong>
-                    {currencyMark}
-                    {currentPrice.toLocaleString()}
+                    {`${currencyMark}${currentPrice.toLocaleString()}`}
                   </strong>
                 </TableItem>
                 <TableItem
@@ -94,8 +90,7 @@ export default function Table() {
                 </TableItem>
                 <TableItem align={'right'} color={'black'}>
                   <strong>
-                    {currencyMark}
-                    {totalVolume.toLocaleString()}
+                    {`${currencyMark}${totalVolume.toLocaleString()}`}
                   </strong>
                 </TableItem>
               </tr>

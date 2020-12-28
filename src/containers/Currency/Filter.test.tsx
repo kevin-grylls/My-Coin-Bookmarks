@@ -2,8 +2,7 @@ import React from 'react';
 import { cleanup } from '@testing-library/react';
 import 'jest-styled-components';
 import { Filter } from './Filter';
-import { STRINGS } from '../constants';
-import { renderComponent } from '../helpers';
+import { renderComponent } from '../../helpers';
 
 describe('Filters', () => {
   afterEach(cleanup);

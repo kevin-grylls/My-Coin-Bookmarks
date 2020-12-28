@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import { Select, FiltersWrapper } from './Style';
-import { STRINGS } from '../constants';
-import { useGlobalContext } from '../context';
+import { STRINGS } from '../../constants';
+import { useGlobalContext } from '../../context';
 
 export function Filter() {
   const { setViewType, setCurrencyType, setDisplayRow } = useGlobalContext();

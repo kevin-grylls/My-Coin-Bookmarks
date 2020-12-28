@@ -1,10 +1,12 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 
 interface GlobalContext {
+  updateCnt: number;
   viewType: string;
   currencyType: string;
   page: number;
   displayRow: number;
+  inc: Function;
   setViewType: Function;
   setCurrencyType: Function;
   setPage: Function;
@@ -12,10 +14,12 @@ interface GlobalContext {
 }
 
 const defaultValue: GlobalContext = {
+  updateCnt: 0,
   viewType: 'all',
   currencyType: 'krw',
   page: 1,
   displayRow: 10,
+  inc: (...args: any) => {},
   setViewType: (...args: any) => {},
   setCurrencyType: (...args: any) => {},
   setPage: (...args: any) => {},
@@ -28,6 +32,15 @@ GlobalContext.displayName = 'GlobalContext';
 export const useGlobalContext = () => useContext(GlobalContext);
 
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
+  const inc = () => {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        updateCnt: prevState.updateCnt + 1,
+      };
+    });
+  };
+
   const setViewType = (viewType: string) => {
     setState((prevState) => {
       return {
@@ -65,10 +78,12 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const initialState = {
+    updateCnt: 0,
     viewType: 'all',
     currencyType: 'krw',
     page: 1,
     displayRow: 10,
+    inc,
     setViewType,
     setCurrencyType,
     setPage,

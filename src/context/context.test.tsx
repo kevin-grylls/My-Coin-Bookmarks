@@ -24,10 +24,12 @@ describe('Global Context', () => {
 
   beforeEach(() => {
     contextValue = {
+      updateCnt: 0,
       viewType: 'all',
       currencyType: 'krw',
       page: 1,
       displayRow: 10,
+      inc: jest.fn(),
       setViewType: jest.fn(),
       setCurrencyType: jest.fn(),
       setPage: jest.fn(),

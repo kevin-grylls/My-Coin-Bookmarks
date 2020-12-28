@@ -1,3 +1,3 @@
 export * from './colors';
-export * from './storage';
+export { default as storage } from './storage';
 export * from './testUtils';
