@@ -4,6 +4,7 @@ import { Layout, Wrapper, Section } from './Style';
 import { Tab } from './Tab';
 
 const Currency = lazy(() => import('./Currency'));
+const Bookmark = lazy(() => import('./Bookmark'));
 
 export const Home = () => {
   return (
@@ -20,6 +21,11 @@ export const Home = () => {
               <Route path="/market">
                 <Suspense fallback={<div>Loading...</div>}>
                   <Currency />
+                </Suspense>
+              </Route>
+              <Route path="/bookmark">
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Bookmark />
                 </Suspense>
               </Route>
               <Redirect from={'/'} to={'/market'} />

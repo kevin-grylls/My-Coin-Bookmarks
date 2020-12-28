@@ -56,9 +56,9 @@ export const TabItem = styled.span.attrs(() => ({
     ${({ theme }) => `color: ${theme.colors.gray[400]};`}
   }
 
-  &:hover {
+  /* &:hover {
     ${ActiveStyle}
-  }
+  } */
 
   ${({ active }) => active && ActiveStyle}
 `;
