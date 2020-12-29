@@ -3,12 +3,14 @@ import { createContext, ReactNode, useContext, useState } from 'react';
 interface GlobalContext {
   updateCnt: number;
   isLoading: boolean;
+  isToast: boolean;
   viewType: string;
   currencyType: string;
   page: number;
   displayRow: number;
   inc: Function;
   setIsLoading: Function;
+  setToast: Function;
   setViewType: Function;
   setCurrencyType: Function;
   setPage: Function;
@@ -19,12 +21,14 @@ interface GlobalContext {
 const defaultValue: GlobalContext = {
   updateCnt: 0,
   isLoading: false,
+  isToast: false,
   viewType: 'all',
   currencyType: 'krw',
   page: 1,
   displayRow: 50,
   inc: (...args: any) => {},
   setIsLoading: (...args: any) => {},
+  setToast: (...args: any) => {},
   setViewType: (...args: any) => {},
   setCurrencyType: (...args: any) => {},
   setPage: (...args: any) => {},
@@ -52,6 +56,15 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
       return {
         ...prevState,
         isLoading: isLoading,
+      };
+    });
+  };
+
+  const setToast = (isToast: boolean) => {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        isToast: isToast,
       };
     });
   };
@@ -100,6 +113,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
   const initialState = {
     isLoading: false,
+    isToast: false,
     updateCnt: 0,
     viewType: 'all',
     currencyType: 'krw',
@@ -107,6 +121,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
     displayRow: 50,
     inc,
     setIsLoading,
+    setToast,
     setViewType,
     setCurrencyType,
     setPage,

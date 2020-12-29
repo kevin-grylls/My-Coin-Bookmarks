@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useGlobalContext } from '../context';
 import { storage } from '../helpers';
+import { useToast } from './useToast';
 
 export function useStorage() {
   const getMyFavorites = () => {
@@ -9,22 +10,32 @@ export function useStorage() {
   };
 
   const [bookmark, setBookmark] = useState(getMyFavorites());
+  const { toast } = useToast();
   const { updateCnt, inc } = useGlobalContext();
 
-  const updateBookmark = (id: string) => {
+  const updateFavorites = (id: string) => {
     const result = storage.get('bookmark');
     const list = result ? (JSON.parse(result) as Array<string>) : [];
+    const isAlreadyTaken = list.includes(id);
+
+    console.log('remote id:', id);
+    console.log('have key:', isAlreadyTaken);
 
     storage.set(
       'bookmark',
       JSON.stringify(
-        list.includes(id)
+        isAlreadyTaken
           ? list.filter((key: string) => key !== id) // case1: already have same id
           : [id].concat(list), // case2: add new id
       ),
     );
 
+    if (isAlreadyTaken) toast();
     inc(); // updateCnt++
+  };
+
+  const updateBookmark = (id: string) => {
+    setTimeout(() => updateFavorites(id), 1000);
   };
 
   useEffect(() => {

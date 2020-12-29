@@ -2,14 +2,17 @@ import React, { Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Layout, Wrapper, Section } from './Style';
 import { Tab } from './Tab';
-import { Spinner } from '../../components';
-import { useLoading } from '../../hooks';
+import { Spinner, Toast } from '../../components';
+import { useLoading, useToast } from '../../hooks';
 
 const Currency = lazy(() => import('../Currency'));
 const Bookmark = lazy(() => import('../Bookmark'));
 
 export const Home = () => {
   const { isLoading } = useLoading();
+  const { isToast } = useToast();
+
+  console.log(isToast);
 
   return (
     <Layout>
@@ -23,12 +26,12 @@ export const Home = () => {
           <Section>
             <Switch>
               <Route path="/market">
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Spinner />}>
                   <Currency />
                 </Suspense>
               </Route>
               <Route path="/bookmark">
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Spinner />}>
                   <Bookmark />
                 </Suspense>
               </Route>
@@ -37,6 +40,7 @@ export const Home = () => {
           </Section>
         </main>
         {isLoading && <Spinner />}
+        {isToast && <Toast />}
       </Wrapper>
     </Layout>
   );

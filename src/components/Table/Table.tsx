@@ -68,7 +68,7 @@ export function Table({
                     onClick={(e) => onClick(id)}
                   />
                 </TableItem>
-                <TableItem align={'left'} color={'black'}>
+                <TableItem align={'left'} color={'black'} anchor={true}>
                   <strong>{name}</strong>
                 </TableItem>
                 <TableItem align={'left'}>

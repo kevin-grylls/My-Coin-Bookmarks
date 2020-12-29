@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { useFilter } from './useFilter';
 import { STRINGS } from '../constants';
 
@@ -21,6 +21,8 @@ describe('useFilter', () => {
 
   it('should call proper method', () => {
     const { result } = renderHook(useFilter);
-    result.current.updateFilter(STRINGS.FILTER.CURRENCY[0]);
+    act(() => {
+      result.current.updateFilter(STRINGS.FILTER.CURRENCY[0]);
+    });
   });
 });
