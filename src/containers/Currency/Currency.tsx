@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 import { Filter } from './Filter';
 import { Table } from '../../components';
 import { useGlobalContext } from '../../context';
-import { useCurrency, useBookmark } from '../../hooks';
+import { useCurrency, useStorage } from '../../hooks';
 
 export default function Currency() {
   const { currencyType } = useGlobalContext();
   const { currency } = useCurrency();
-  const { bookmark, updateBookmark } = useBookmark();
+  const { bookmark, updateBookmark } = useStorage();
 
   return (
     <Fragment>

@@ -3,31 +3,20 @@ import { useBookmark } from './useBookmark';
 import { storage } from '../helpers';
 
 describe('useBookmark', () => {
-  const sampleReturn = [
-    'Bitcoin',
-    'Ethereum',
-    'Tether',
-    'XRP',
-    'Litecoin',
-    'Bitcoin Cash',
-  ];
+  const sample = ['Bitcoin', 'Ethereum', 'Tether', 'bitcoin-cash'];
 
   beforeAll(() => {
-    storage.clear();
+    storage.set('bookmark', JSON.stringify(sample));
   });
 
   afterAll(() => {
     storage.clear();
   });
 
-  it('should return empty array', () => {
-    const { result } = renderHook(useBookmark);
-    expect(result.current.bookmark).toEqual([]);
-  });
+  it('should return currency data using storage', async () => {
+    const { result, waitForNextUpdate } = renderHook(useBookmark);
+    await waitForNextUpdate();
 
-  it('should return sample array', () => {
-    storage.set('bookmark', JSON.stringify(sampleReturn));
-    const { result } = renderHook(useBookmark);
-    expect(result.current.bookmark).toEqual(sampleReturn);
+    expect(result.current.favorites.length).toBe(sample.length);
   });
 });

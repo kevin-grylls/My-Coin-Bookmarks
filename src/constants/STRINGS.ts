@@ -43,8 +43,13 @@ export const STRINGS = Object.freeze({
     },
     {
       name: '24H Volume',
-      width: '25%',
+      width: '22%',
       align: 'right',
+    },
+    {
+      name: '',
+      width: '3%',
+      align: 'center',
     },
   ],
 });

@@ -1,35 +1,26 @@
 import { useState, useEffect } from 'react';
-import { useGlobalContext } from '../context';
-import { storage } from '../helpers';
+import { useStorage } from './useStorage';
+import { getMarketCurrencies } from '../api';
 
 export function useBookmark() {
-  const getMyFavorites = () => {
-    const list = storage.get('bookmark');
-    return list ? JSON.parse(list) : [];
-  };
+  const { bookmark } = useStorage();
 
-  const [bookmark, setBookmark] = useState(getMyFavorites());
-  const { updateCnt, inc } = useGlobalContext();
+  const [favorites, setFavorites] = useState([]);
 
-  const updateBookmark = (id: string) => {
-    const result = storage.get('bookmark');
-    const list = result ? (JSON.parse(result) as Array<string>) : [];
+  const fetchMarketCurrencies = async () => {
+    const result = await getMarketCurrencies({
+      vsCurrency: 'krw',
+      ids: (bookmark as Array<string>).join(',').toLowerCase(),
+      order: 'market_cap_desc',
+      sparkLine: false,
+    });
 
-    storage.set(
-      'bookmark',
-      JSON.stringify(
-        list.includes(id)
-          ? list.filter((key: string) => key !== id) // case1: already have same id
-          : [id].concat(list), // case2: add new id
-      ),
-    );
-
-    inc(); // updateCnt++
+    setFavorites(result);
   };
 
   useEffect(() => {
-    setBookmark(getMyFavorites());
-  }, [updateCnt]);
+    fetchMarketCurrencies();
+  }, [bookmark]);
 
-  return { bookmark, updateBookmark };
+  return { favorites };
 }

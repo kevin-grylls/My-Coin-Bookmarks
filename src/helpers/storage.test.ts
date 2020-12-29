@@ -37,4 +37,10 @@ describe('storage', () => {
 
     expect(storage.getAll()).toEqual(sample);
   });
+
+  it('should return stored array and make string format', () => {
+    storage.set('sample', JSON.stringify(sample));
+    const result = JSON.parse(storage.get('sample') as string) as string[];
+    expect(result.join(',')).toEqual('1,2,3,4');
+  });
 });

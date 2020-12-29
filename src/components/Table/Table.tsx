@@ -2,17 +2,21 @@ import React from 'react';
 import { TableWrapper, TableItem, Star } from './Style';
 import { STRINGS } from '../../constants';
 
+type TableInput = {
+  isOnlyBookmark?: boolean;
+  bookMark?: Array<string>;
+  currency: Array<any>;
+  currencyType: string;
+  onClick: (...args: any) => void;
+};
+
 export function Table({
+  isOnlyBookmark = false,
   bookMark = [],
   currency = [],
   currencyType = 'krw',
   onClick,
-}: {
-  bookMark: Array<string>;
-  currency: Array<any>;
-  currencyType: string;
-  onClick: (...args: any) => void;
-}) {
+}: TableInput) {
   const currencyMark = currencyType === 'usd' ? '$' : '₩';
 
   return (
@@ -44,6 +48,7 @@ export function Table({
             }: any,
             idx: number,
           ) => {
+            const isStar = isOnlyBookmark || bookMark.includes(id);
             const currentPrice = Number(current_price);
             const anHourPrice = Number(price_change_percentage_1h_in_currency);
             const dailyPrice = Number(price_change_percentage_24h_in_currency);
@@ -54,7 +59,7 @@ export function Table({
               <tr key={`currency-row-${symbol}-${idx}`}>
                 <TableItem align={'center'} color={'black'}>
                   <Star
-                    isSelected={bookMark.includes(id)}
+                    isSelected={isStar}
                     className={'fa fa-star'}
                     onClick={(e) => onClick(id)}
                   />
@@ -93,6 +98,7 @@ export function Table({
                     {`${currencyMark}${totalVolume.toLocaleString()}`}
                   </strong>
                 </TableItem>
+                <TableItem />
               </tr>
             );
           },
