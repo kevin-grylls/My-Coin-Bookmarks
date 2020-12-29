@@ -12,8 +12,6 @@ export const Home = () => {
   const { isLoading } = useLoading();
   const { isToast } = useToast();
 
-  console.log(isToast);
-
   return (
     <Layout>
       <Wrapper>

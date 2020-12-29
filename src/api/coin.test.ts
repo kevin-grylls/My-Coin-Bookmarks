@@ -1,6 +1,6 @@
 import { getMarketCurrencies } from './coins';
 
-describe('coin api', () => {
+describe('getMarketCurrencies', () => {
   const query = {
     vsCurrency: 'usd',
     order: 'market_cap_desc',

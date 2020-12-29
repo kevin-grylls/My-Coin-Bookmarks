@@ -18,9 +18,6 @@ export function useStorage() {
     const list = result ? (JSON.parse(result) as Array<string>) : [];
     const isAlreadyTaken = list.includes(id);
 
-    console.log('remote id:', id);
-    console.log('have key:', isAlreadyTaken);
-
     storage.set(
       'bookmark',
       JSON.stringify(
