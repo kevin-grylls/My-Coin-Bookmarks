@@ -13,7 +13,7 @@ export const STRINGS = Object.freeze({
     },
     {
       name: '자산',
-      width: '15%',
+      width: '20%',
       align: 'left',
     },
     {
@@ -23,7 +23,7 @@ export const STRINGS = Object.freeze({
     },
     {
       name: 'Price',
-      width: '20%',
+      width: '15%',
       align: 'right',
     },
     {
@@ -52,4 +52,5 @@ export const STRINGS = Object.freeze({
       align: 'center',
     },
   ],
+  ADD_BTN: '+ 더보기',
 });

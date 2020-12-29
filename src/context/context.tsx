@@ -13,6 +13,7 @@ interface GlobalContext {
   setCurrencyType: Function;
   setPage: Function;
   setDisplayRow: Function;
+  init: Function;
 }
 
 const defaultValue: GlobalContext = {
@@ -28,6 +29,7 @@ const defaultValue: GlobalContext = {
   setCurrencyType: (...args: any) => {},
   setPage: (...args: any) => {},
   setDisplayRow: (...args: any) => {},
+  init: (...args: any) => {},
 };
 
 export const GlobalContext = createContext<GlobalContext>(defaultValue);
@@ -90,6 +92,12 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const init = () => {
+    setPage(1);
+    setCurrencyType('krw');
+    setDisplayRow(50);
+  };
+
   const initialState = {
     isLoading: false,
     updateCnt: 0,
@@ -103,6 +111,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
     setCurrencyType,
     setPage,
     setDisplayRow,
+    init,
   };
 
   const [state, setState] = useState(initialState);

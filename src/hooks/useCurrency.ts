@@ -5,12 +5,12 @@ import { useLoading } from './useLoading';
 
 export function useCurrency() {
   const {
+    viewType,
     currencyType,
     page,
     displayRow,
-    setCurrencyType,
     setPage,
-    setDisplayRow,
+    init,
   } = useGlobalContext();
   const { loading } = useLoading();
   const [currency, setCurrency] = useState([]);
@@ -43,10 +43,8 @@ export function useCurrency() {
   }, [currencyType, displayRow]);
 
   useEffect(() => {
-    setCurrencyType('krw');
-    setPage(1);
-    setDisplayRow(50);
+    init();
   }, []);
 
-  return { currency, currencyType, loadMoreCurrency };
+  return { currency, currencyType, loadMoreCurrency, viewType };
 }

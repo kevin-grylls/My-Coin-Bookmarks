@@ -4,6 +4,7 @@ import { STRINGS } from '../../constants';
 
 type TableInput = {
   isOnlyBookmark?: boolean;
+  viewType?: string;
   bookMark?: Array<string>;
   currency: Array<any>;
   currencyType: string;
@@ -13,6 +14,7 @@ type TableInput = {
 
 export function Table({
   isOnlyBookmark = false,
+  viewType = 'all',
   bookMark = [],
   currency = [],
   currencyType = 'krw',
@@ -57,7 +59,7 @@ export function Table({
             const weeklyPrice = Number(price_change_percentage_7d_in_currency);
             const totalVolume = Number(total_volume);
 
-            return (
+            const trElement = (
               <tr key={`currency-row-${symbol}-${idx}`}>
                 <TableItem align={'center'} color={'black'}>
                   <Star
@@ -103,6 +105,12 @@ export function Table({
                 <TableItem />
               </tr>
             );
+
+            if (viewType === 'bookmark') {
+              return isStar ? trElement : null;
+            } else {
+              return trElement;
+            }
           },
         )}
       </tbody>
@@ -110,7 +118,7 @@ export function Table({
         <tfoot>
           <tr>
             <TableItem colSpan={9} align={'center'}>
-              <Text onClick={onAddClick}>+ 더보기</Text>
+              <Text onClick={onAddClick}>{STRINGS.ADD_BTN}</Text>
             </TableItem>
           </tr>
         </tfoot>
