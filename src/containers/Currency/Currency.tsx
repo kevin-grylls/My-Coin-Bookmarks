@@ -1,12 +1,10 @@
 import React, { Fragment } from 'react';
 import { Filter } from './Filter';
 import { Table } from '../../components';
-import { useGlobalContext } from '../../context';
 import { useCurrency, useStorage } from '../../hooks';
 
 export default function Currency() {
-  const { currencyType } = useGlobalContext();
-  const { currency } = useCurrency();
+  const { currency, currencyType, loadMoreCurrency } = useCurrency();
   const { bookmark, updateBookmark } = useStorage();
 
   return (
@@ -17,6 +15,7 @@ export default function Currency() {
         currency={currency}
         currencyType={currencyType}
         onClick={updateBookmark}
+        onAddClick={() => loadMoreCurrency()}
       />
     </Fragment>
   );

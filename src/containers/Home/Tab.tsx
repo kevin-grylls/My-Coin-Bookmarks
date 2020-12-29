@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { TabWrapper, TabItem } from './Style';
-import { STRINGS, ROUTES } from '../constants';
-import { useTab } from '../hooks';
+import { STRINGS, ROUTES } from '../../constants';
+import { useTab } from '../../hooks';
 
 export function Tab() {
   const { tabIdx, updateTabIdx } = useTab();

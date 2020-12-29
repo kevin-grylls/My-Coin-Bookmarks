@@ -15,7 +15,7 @@ export const TableWrapper = styled.table`
   }
 
   td {
-    line-height: 30px;
+    line-height: 32px;
     ${({ theme }) => `font-size: ${theme.fonts.xs};`}
   }
 `;
@@ -32,7 +32,10 @@ export const TableItem = styled.td<{ align?: string; color?: string }>`
 
 export const Star = styled.span<{ isSelected?: boolean }>`
   cursor: pointer;
-
   color: ${({ theme, isSelected }) =>
     isSelected ? theme.colors.yellow : theme.colors.gray[100]};
+`;
+
+export const Text = styled.span`
+  cursor: pointer;
 `;

@@ -12,7 +12,7 @@ export const getMarketCurrencies = ({
   vsCurrency,
   ids = '',
   order = 'market_cap_desc',
-  perPage = 10,
+  perPage,
   page = 1,
   sparkLine = false,
   priceChangePercentage = '1h,24h,7d',

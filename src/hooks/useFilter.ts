@@ -23,7 +23,7 @@ export function useFilter() {
         break;
 
       case STRINGS.FILTER.LIST_NUMBER[0]:
-        setDisplayRow(10);
+        setDisplayRow(50);
         break;
 
       case STRINGS.FILTER.LIST_NUMBER[1]:
@@ -31,7 +31,7 @@ export function useFilter() {
         break;
 
       case STRINGS.FILTER.LIST_NUMBER[2]:
-        setDisplayRow(50);
+        setDisplayRow(10);
         break;
 
       default:

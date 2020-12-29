@@ -2,11 +2,13 @@ import { createContext, ReactNode, useContext, useState } from 'react';
 
 interface GlobalContext {
   updateCnt: number;
+  isLoading: boolean;
   viewType: string;
   currencyType: string;
   page: number;
   displayRow: number;
   inc: Function;
+  setIsLoading: Function;
   setViewType: Function;
   setCurrencyType: Function;
   setPage: Function;
@@ -15,11 +17,13 @@ interface GlobalContext {
 
 const defaultValue: GlobalContext = {
   updateCnt: 0,
+  isLoading: false,
   viewType: 'all',
   currencyType: 'krw',
   page: 1,
-  displayRow: 10,
+  displayRow: 50,
   inc: (...args: any) => {},
+  setIsLoading: (...args: any) => {},
   setViewType: (...args: any) => {},
   setCurrencyType: (...args: any) => {},
   setPage: (...args: any) => {},
@@ -37,6 +41,15 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
       return {
         ...prevState,
         updateCnt: prevState.updateCnt + 1,
+      };
+    });
+  };
+
+  const setIsLoading = (isLoading: boolean) => {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        isLoading: isLoading,
       };
     });
   };
@@ -78,12 +91,14 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const initialState = {
+    isLoading: false,
     updateCnt: 0,
     viewType: 'all',
     currencyType: 'krw',
     page: 1,
-    displayRow: 10,
+    displayRow: 50,
     inc,
+    setIsLoading,
     setViewType,
     setCurrencyType,
     setPage,

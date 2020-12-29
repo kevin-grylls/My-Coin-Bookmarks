@@ -9,6 +9,6 @@ describe('useCurrency', () => {
   test('should return currency list from api', async () => {
     const { result, waitForNextUpdate } = renderHook(useCurrency);
     await waitForNextUpdate();
-    expect(result.current.currency.length).toBe(10);
+    expect(result.current.currency.length).toBe(50);
   });
 });

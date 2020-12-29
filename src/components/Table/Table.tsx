@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableWrapper, TableItem, Star } from './Style';
+import { TableWrapper, TableItem, Star, Text } from './Style';
 import { STRINGS } from '../../constants';
 
 type TableInput = {
@@ -8,6 +8,7 @@ type TableInput = {
   currency: Array<any>;
   currencyType: string;
   onClick: (...args: any) => void;
+  onAddClick?: (...args: any) => void;
 };
 
 export function Table({
@@ -16,6 +17,7 @@ export function Table({
   currency = [],
   currencyType = 'krw',
   onClick,
+  onAddClick,
 }: TableInput) {
   const currencyMark = currencyType === 'usd' ? '$' : '₩';
 
@@ -104,6 +106,15 @@ export function Table({
           },
         )}
       </tbody>
+      {!isOnlyBookmark && (
+        <tfoot>
+          <tr>
+            <TableItem colSpan={9} align={'center'}>
+              <Text onClick={onAddClick}>+ 더보기</Text>
+            </TableItem>
+          </tr>
+        </tfoot>
+      )}
     </TableWrapper>
   );
 }

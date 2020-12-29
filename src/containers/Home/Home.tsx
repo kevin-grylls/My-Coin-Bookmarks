@@ -2,11 +2,15 @@ import React, { Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Layout, Wrapper, Section } from './Style';
 import { Tab } from './Tab';
+import { Spinner } from '../../components';
+import { useLoading } from '../../hooks';
 
-const Currency = lazy(() => import('./Currency'));
-const Bookmark = lazy(() => import('./Bookmark'));
+const Currency = lazy(() => import('../Currency'));
+const Bookmark = lazy(() => import('../Bookmark'));
 
 export const Home = () => {
+  const { isLoading } = useLoading();
+
   return (
     <Layout>
       <Wrapper>
@@ -32,6 +36,7 @@ export const Home = () => {
             </Switch>
           </Section>
         </main>
+        {isLoading && <Spinner />}
       </Wrapper>
     </Layout>
   );

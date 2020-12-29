@@ -3,7 +3,7 @@ export const STRINGS = Object.freeze({
   FILTER: {
     VIEW_TYPE: ['전체보기', '북마크 보기'],
     CURRENCY: ['KRW 보기', 'USD 보기'],
-    LIST_NUMBER: ['10개 보기', '30개 보기', '50개 보기'],
+    LIST_NUMBER: ['50개 보기', '30개 보기', '10개 보기'],
   },
   TABLE: [
     {

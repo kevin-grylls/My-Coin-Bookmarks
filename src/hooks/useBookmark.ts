@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useStorage } from './useStorage';
 import { getMarketCurrencies } from '../api';
+import { useLoading } from './useLoading';
 
 export function useBookmark() {
   const { bookmark } = useStorage();
+  const { loading } = useLoading();
 
   const [favorites, setFavorites] = useState([]);
 
@@ -19,6 +21,7 @@ export function useBookmark() {
   };
 
   useEffect(() => {
+    loading();
     fetchMarketCurrencies();
   }, [bookmark]);
 
