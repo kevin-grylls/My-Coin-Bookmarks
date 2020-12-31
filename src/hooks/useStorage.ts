@@ -32,7 +32,7 @@ export function useStorage() {
   };
 
   const updateBookmark = (id: string) => {
-    setTimeout(() => updateFavorites(id), 1000);
+    setTimeout(() => updateFavorites(id), 500);
   };
 
   useEffect(() => {

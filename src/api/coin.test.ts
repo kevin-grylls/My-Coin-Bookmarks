@@ -1,4 +1,4 @@
-import { getMarketCurrencies } from './coins';
+import { getMarketCurrencies, getCurrencyDetails } from './coins';
 
 describe('getMarketCurrencies', () => {
   const query = {
@@ -31,5 +31,13 @@ describe('getMarketCurrencies', () => {
       ids: 'bitcoin,ethereum',
     });
     expect(result.length).toBe(2);
+  });
+});
+
+describe('getCurrencyDetails', () => {
+  it('should fetch data using id', async () => {
+    const result = await getCurrencyDetails({ id: 'bitcoin ' });
+    expect(result.id).toEqual('bitcoin');
+    expect(result.localization.ko).toEqual('비트코인');
   });
 });

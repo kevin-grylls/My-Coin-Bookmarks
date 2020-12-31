@@ -5,6 +5,7 @@ export const STRINGS = Object.freeze({
     CURRENCY: ['KRW 보기', 'USD 보기'],
     LIST_NUMBER: ['50개 보기', '30개 보기', '10개 보기'],
   },
+  ADD_BTN: '+ 더보기',
   TABLE: [
     {
       name: '',
@@ -52,5 +53,4 @@ export const STRINGS = Object.freeze({
       align: 'center',
     },
   ],
-  ADD_BTN: '+ 더보기',
 });

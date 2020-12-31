@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useGlobalContext } from '../context';
 
 export function useLoading() {

@@ -5,3 +5,4 @@ export * from './useFilter';
 export * from './useBookmark';
 export * from './useLoading';
 export * from './useToast';
+export * from './useDetails';

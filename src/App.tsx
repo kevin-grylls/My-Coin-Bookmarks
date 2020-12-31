@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { ContextProvider } from './context';
 import { theme } from './styles';
-import { Home } from './containers';
+import { Home, Details } from './containers';
 
 function App() {
   return (
@@ -11,6 +11,9 @@ function App() {
       <ContextProvider>
         <Router>
           <Switch>
+            <Route path={'/details/:id'}>
+              <Details />
+            </Route>
             <Route path={['/', '/bookmark', '*']}>
               <Home />
             </Route>

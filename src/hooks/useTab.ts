@@ -4,7 +4,9 @@ import { useLocation } from 'react-router-dom';
 export function useTab() {
   const { pathname } = useLocation();
 
-  const getIdx = () => (pathname === '/market' ? 0 : 1);
+  const isMatchedUrl = pathname === '/' || pathname === '/market';
+
+  const getIdx = () => (isMatchedUrl ? 0 : 1);
 
   const [tabIdx, setTabIdx] = useState(getIdx());
 

@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { TableWrapper, TableItem, Star, Text } from './Style';
-import { STRINGS } from '../../constants';
+import { STRINGS, ROUTES } from '../../constants';
 
 type TableInput = {
   isOnlyBookmark?: boolean;
@@ -68,8 +69,10 @@ export function Table({
                     onClick={(e) => onClick(id)}
                   />
                 </TableItem>
-                <TableItem align={'left'} color={'black'} anchor={true}>
-                  <strong>{name}</strong>
+                <TableItem align={'left'} color={'black'}>
+                  <strong>
+                    <Link to={`/details/${id}`}>{name}</Link>
+                  </strong>
                 </TableItem>
                 <TableItem align={'left'}>
                   <strong>{symbol.toUpperCase()}</strong>
