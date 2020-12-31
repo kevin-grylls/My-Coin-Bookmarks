@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { useParams } from 'react-router-dom';
-import { Spinner } from '../../components';
+import { Spinner, Toast } from '../../components';
 import { Layout, Wrapper, Section } from '../Home/Style';
 import { FiltersWrapper, Select } from '../Currency/Style';
 import { Star } from '../../components/Table/Style';
@@ -14,17 +14,29 @@ import {
   UtilityDiv,
   ContentWrapper,
   Text,
+  CalculatorInput,
 } from './Style';
 import { STRINGS } from '../../constants';
 import { formatter } from '../../helpers';
-import { useDetails, useFilter, useLoading } from '../../hooks';
+import {
+  useCalculator,
+  useDetails,
+  useFilter,
+  useLoading,
+  useStorage,
+  useToast,
+} from '../../hooks';
 
 export function Details() {
   const { details, open, setOpen, currencyType }: any = useDetails(useParams());
   const { isLoading } = useLoading();
+  const { isToast } = useToast();
   const { updateFilter } = useFilter();
+  const { bookmark, updateBookmark } = useStorage();
+  const { result, getCurrency, getCrypto } = useCalculator();
 
   const {
+    id,
     symbol,
     market_cap_rank,
     market_data: {
@@ -39,8 +51,6 @@ export function Details() {
     image: { thumb },
     links: { homepage },
   } = details;
-
-  console.log(details);
 
   const currencyMark = currencyType === 'usd' ? '$' : '₩';
   const currencyName =
@@ -65,7 +75,11 @@ export function Details() {
       <Wrapper>
         <FiltersWrapper>
           <Title>
-            <Star className={'fa fa-star'} />
+            <Star
+              isSelected={bookmark.includes(id)}
+              className={'fa fa-star'}
+              onClick={() => updateBookmark(id)}
+            />
             <img src={thumb} alt={'thumbnail'} />
             {currencyName} ({symbol.toUpperCase()})
           </Title>
@@ -108,7 +122,7 @@ export function Details() {
                   </div>
                   <div style={{ textAlign: 'right' }}>
                     <Text fontSize={'xs'}>
-                      {`1.00000000 ${(symbol as string).toUpperCase()}`}
+                      {`1.00000000 ${String(symbol).toUpperCase()}`}
                     </Text>
                   </div>
                 </div>
@@ -183,10 +197,19 @@ export function Details() {
                   backgroundColor: '#F5F5F5',
                 }}
               >
-                BTC
+                {String(symbol).toUpperCase()}
               </div>
 
-              <input type="text" style={{ border: 'none' }} />
+              <CalculatorInput
+                type={'text'}
+                value={result.crypto}
+                onChange={(e) =>
+                  getCurrency(
+                    e.target.value.replace(/[^0-9.]/g, ''),
+                    currentPrice,
+                  )
+                }
+              />
 
               <div
                 style={{
@@ -207,10 +230,16 @@ export function Details() {
                   backgroundColor: '#F5F5F5',
                 }}
               >
-                KRW
+                {String(currencyType).toUpperCase()}
               </div>
 
-              <input type="text" style={{ border: 'none' }} />
+              <CalculatorInput
+                type={'text'}
+                value={Number(result.currency || 0).toLocaleString()}
+                onChange={(e) =>
+                  getCrypto(currentPrice, e.target.value.replace(/[^0-9]/g, ''))
+                }
+              />
             </ContentWrapper>
 
             <UtilityDiv height={'20px'} />
@@ -221,6 +250,7 @@ export function Details() {
           {open && <DescContent>{currencyDesc}</DescContent>}
         </Section>
         {isLoading && <Spinner />}
+        {isToast && <Toast />}
       </Wrapper>
     </Layout>
   );

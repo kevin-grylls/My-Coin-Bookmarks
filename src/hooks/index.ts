@@ -6,3 +6,4 @@ export * from './useBookmark';
 export * from './useLoading';
 export * from './useToast';
 export * from './useDetails';
+export * from './useCalculator';

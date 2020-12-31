@@ -69,6 +69,16 @@ export const CalculatorWrapper = styled.div`
   }
 `;
 
+export const CalculatorInput = styled.input`
+  width: 25%;
+  min-width: 120px;
+  padding: 5px 12px;
+  border: none;
+  text-align: right;
+  outline: none;
+  font-size: ${({ theme }) => theme.fonts.xs};
+`;
+
 export const ContentWrapper = styled.div`
   display: flex;
   justify-content: center;

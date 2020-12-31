@@ -12,12 +12,12 @@ describe('useBookmark', () => {
     'Bitcoin Cash',
   ];
 
-  beforeAll(() => {
-    storage.clear();
+  beforeAll(async () => {
+    await storage.clear();
   });
 
-  afterAll(() => {
-    storage.clear();
+  afterAll(async () => {
+    await storage.clear();
   });
 
   it('should return empty array', () => {

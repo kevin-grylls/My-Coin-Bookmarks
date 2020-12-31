@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TableWrapper, TableItem, Star, Text } from './Style';
-import { STRINGS, ROUTES } from '../../constants';
+import { STRINGS } from '../../constants';
 
 type TableInput = {
   isOnlyBookmark?: boolean;
