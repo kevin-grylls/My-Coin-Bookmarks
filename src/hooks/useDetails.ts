@@ -18,7 +18,6 @@ type Details = {
   symbol: string;
   name: string;
   market_cap_rank: number;
-  public_interest_score: number;
   market_data: {
     total_volume: MarketData;
     market_cap: MarketData;
@@ -49,7 +48,6 @@ export function useDetails({ id }: { id: string }) {
     id: '',
     symbol: '',
     name: '',
-    public_interest_score: 0,
     market_cap_rank: 0,
     market_data: {
       total_volume: {

@@ -3,7 +3,10 @@ import { createContext, ReactNode, useContext, useState } from 'react';
 interface GlobalContext {
   updateCnt: number;
   isLoading: boolean;
-  isToast: boolean;
+  isToast: {
+    status: boolean;
+    msg: string;
+  };
   viewType: string;
   currencyType: string;
   page: number;
@@ -21,7 +24,10 @@ interface GlobalContext {
 const defaultValue: GlobalContext = {
   updateCnt: 0,
   isLoading: false,
-  isToast: false,
+  isToast: {
+    status: false,
+    msg: '',
+  },
   viewType: 'all',
   currencyType: 'krw',
   page: 1,
@@ -60,11 +66,14 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const setToast = (isToast: boolean) => {
-    setState((prevState) => {
+  const setToast = ({ status, msg }: { status: boolean; msg: string }) => {
+    setState((prevState: any) => {
       return {
         ...prevState,
-        isToast: isToast,
+        isToast: {
+          status,
+          msg,
+        },
       };
     });
   };
@@ -114,7 +123,10 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 
   const initialState = {
     isLoading: false,
-    isToast: false,
+    isToast: {
+      status: false,
+      msg: '',
+    },
     updateCnt: 0,
     viewType: 'all',
     currencyType: 'krw',

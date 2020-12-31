@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useGlobalContext } from '../context';
 import { storage } from '../helpers';
 import { useToast } from './useToast';
+import { STRINGS } from '../constants';
 
 export function useStorage() {
   const getMyFavorites = () => {
@@ -27,7 +28,9 @@ export function useStorage() {
       ),
     );
 
-    if (isAlreadyTaken) toast();
+    isAlreadyTaken
+      ? toast(STRINGS.BOOKMARK_MSG[1])
+      : toast(STRINGS.BOOKMARK_MSG[0]);
     inc(); // updateCnt++
   };
 

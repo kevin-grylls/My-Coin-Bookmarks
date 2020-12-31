@@ -36,7 +36,7 @@ describe('getMarketCurrencies', () => {
 
 describe('getCurrencyDetails', () => {
   it('should fetch data using id', async () => {
-    const result = await getCurrencyDetails({ id: 'bitcoin ' });
+    const result = await getCurrencyDetails({ id: 'bitcoin' });
     expect(result.id).toEqual('bitcoin');
     expect(result.localization.ko).toEqual('비트코인');
   });

@@ -128,6 +128,14 @@ describe('Currency', () => {
           cy.getByTestId('currency-table').find('tr').should('have.length', 42);
         });
       });
+
+      describe(`페이지 초기화 테스트`, () => {
+        it('다른 페이지를 갔다오거나 새로고침을 할 경우 기본 설정을 기준으로 리스트를 다시 그립니다.', () => {
+          cy.reload();
+          cy.getByTestId('currency-table').find('tr').should('have.length', 52);
+          cy.contains('₩');
+        });
+      });
     });
   });
 });

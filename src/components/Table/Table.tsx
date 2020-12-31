@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { TableWrapper, TableItem, Star, Text } from './Style';
 import { STRINGS } from '../../constants';
+import { formatter } from '../../helpers';
 
 type TableInput = {
   isOnlyBookmark?: boolean;
@@ -64,6 +65,7 @@ export function Table({
               <tr key={`currency-row-${symbol}-${idx}`}>
                 <TableItem align={'center'} color={'black'}>
                   <Star
+                    data-test-id={'bookmark-add'}
                     isSelected={isStar}
                     className={'fa fa-star'}
                     onClick={(e) => onClick(id)}
@@ -79,7 +81,9 @@ export function Table({
                 </TableItem>
                 <TableItem align={'right'} color={'black'}>
                   <strong>
-                    {`${currencyMark}${currentPrice.toLocaleString()}`}
+                    {`${currencyMark}${formatter.getCurrencyFormat(
+                      currentPrice,
+                    )}`}
                   </strong>
                 </TableItem>
                 <TableItem
@@ -102,7 +106,9 @@ export function Table({
                 </TableItem>
                 <TableItem align={'right'} color={'black'}>
                   <strong>
-                    {`${currencyMark}${totalVolume.toLocaleString()}`}
+                    {`${currencyMark}${formatter.getCurrencyFormat(
+                      totalVolume,
+                    )}`}
                   </strong>
                 </TableItem>
                 <TableItem />

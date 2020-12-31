@@ -1,12 +1,12 @@
 import storage from './storage';
 
 describe('storage', () => {
-  beforeEach(() => {
-    storage.clear();
+  beforeEach(async () => {
+    await storage.clear();
   });
 
-  afterAll(() => {
-    storage.clear();
+  afterAll(async () => {
+    await storage.clear();
   });
 
   const sample = ['1', '2', '3', '4'];

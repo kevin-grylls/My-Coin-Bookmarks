@@ -8,6 +8,7 @@ import {
   Title,
   Table,
   TableWrapper,
+  DescBox,
   DescBtn,
   DescContent,
   CalculatorWrapper,
@@ -76,6 +77,7 @@ export default function Details() {
         <FiltersWrapper>
           <Title>
             <Star
+              data-test-id={'bookmark-add'}
               isSelected={bookmark.includes(id)}
               className={'fa fa-star'}
               onClick={() => updateBookmark(id)}
@@ -90,6 +92,7 @@ export default function Details() {
             {currencyName} {`(${symbol.toUpperCase()})`}
           </Title>
           <Select
+            data-test-id={'details-currency-type-select'}
             marginLeft={'auto'}
             onChange={(e: ChangeEvent<HTMLSelectElement>) =>
               updateFilter(e.target.value)
@@ -120,7 +123,12 @@ export default function Details() {
               <ContentWrapper>
                 <div style={{ width: '25%', marginLeft: 'auto' }}>
                   <div style={{ textAlign: 'right' }}>
-                    <Text fontSize={'sm'} color={'black'} bold={true}>
+                    <Text
+                      data-test-id={'currency-text'}
+                      fontSize={'sm'}
+                      color={'black'}
+                      bold={true}
+                    >
                       {`${currencyMark}${formatter.getCurrencyFormat(
                         currentPrice,
                       )}`}
@@ -193,20 +201,10 @@ export default function Details() {
               <span>{STRINGS.DETAILS.CALCULATE_PRICE}</span>
             </UtilityDiv>
             <ContentWrapper>
-              <div
-                style={{
-                  width: '10%',
-                  border: 'none',
-                  verticalAlign: 'middle',
-                  lineHeight: '32px',
-                  paddingInlineStart: '5px',
-                  backgroundColor: '#F5F5F5',
-                }}
-              >
-                {String(symbol).toUpperCase()}
-              </div>
+              <DescBox>{String(symbol).toUpperCase()}</DescBox>
 
               <CalculatorInput
+                data-test-id={'crypto-input'}
                 type={'text'}
                 value={result.crypto}
                 onChange={(e) =>
@@ -226,20 +224,12 @@ export default function Details() {
               >
                 &#8646;
               </div>
-              <div
-                style={{
-                  width: '10%',
-                  border: 'none',
-                  verticalAlign: 'middle',
-                  lineHeight: '32px',
-                  paddingInlineStart: '5px',
-                  backgroundColor: '#F5F5F5',
-                }}
-              >
+              <DescBox data-test-id={'currency-type-title'}>
                 {String(currencyType).toUpperCase()}
-              </div>
+              </DescBox>
 
               <CalculatorInput
+                data-test-id={'currency-input'}
                 type={'text'}
                 value={Number(result.currency || 0).toLocaleString()}
                 onChange={(e) =>
@@ -252,13 +242,17 @@ export default function Details() {
           </CalculatorWrapper>
         </Section>
         <Section>
-          <DescBtn onClick={() => setOpen(true)}>
+          <DescBtn data-test-id={'show-desc-btn'} onClick={() => setOpen(true)}>
             {STRINGS.DETAILS.DESCRIPTION} &#9660;
           </DescBtn>
-          {open && <DescContent>{currencyDesc}</DescContent>}
+          {open && (
+            <DescContent data-test-id={'show-desc-content'}>
+              {currencyDesc}
+            </DescContent>
+          )}
         </Section>
         {isLoading && <Spinner />}
-        {isToast && <Toast />}
+        {isToast.status && <Toast message={isToast.msg} />}
       </Wrapper>
     </Layout>
   );

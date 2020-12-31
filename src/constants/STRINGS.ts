@@ -14,6 +14,7 @@ export const STRINGS = Object.freeze({
     LIST_NUMBER: ['50개 보기', '30개 보기', '10개 보기'],
   },
   ADD_BTN: '+ 더보기',
+  BOOKMARK_MSG: ['북마크가 추가되었습니다.', '북마크가 해제되었습니다.'],
   TABLE: [
     {
       name: '',

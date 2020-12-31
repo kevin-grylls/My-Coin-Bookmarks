@@ -39,7 +39,7 @@ export const Home = () => {
           </Section>
         </main>
         {isLoading && <Spinner />}
-        {isToast && <Toast />}
+        {isToast.status && <Toast message={isToast.msg} />}
       </Wrapper>
     </Layout>
   );

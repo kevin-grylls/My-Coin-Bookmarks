@@ -112,6 +112,15 @@ export const UtilityDiv = styled.div<{
   padding: ${({ padding }) => padding};
 `;
 
+export const DescBox = styled.div`
+  width: 10%;
+  border: none;
+  vertical-align: middle;
+  line-height: 32px;
+  padding-inline-start: 5px;
+  background-color: #f5f5f5;
+`;
+
 export const DescBtn = styled.div`
   width: 100%;
   padding-top: 20px;

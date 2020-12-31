@@ -2,8 +2,8 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useToast } from './useToast';
 
 describe('useToast', () => {
-  it('should return null', () => {
+  it('should return initial value', () => {
     const { result } = renderHook(useToast);
-    expect(result.current.isToast).toBe(false);
+    expect(result.current.isToast).toEqual({ status: false, msg: '' });
   });
 });
