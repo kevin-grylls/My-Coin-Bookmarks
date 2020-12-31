@@ -14,9 +14,4 @@ describe('format', () => {
     const result = formatter.getPercentFormat(samplePercent, 1);
     expect(result).toEqual(targetPercent);
   });
-
-  // it('should return result if it is valid format', () => {
-  //   const result = formatter.isCryptoCurrencyType('123.43423543');
-  //   expect(result).toBe(true);
-  // });
 });

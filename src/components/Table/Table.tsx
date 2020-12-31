@@ -25,7 +25,7 @@ export function Table({
   const currencyMark = currencyType === 'usd' ? '$' : '₩';
 
   return (
-    <TableWrapper>
+    <TableWrapper data-test-id={'currency-table'}>
       <thead>
         <tr>
           {STRINGS.TABLE.map(({ name, width, align }, idx) => (

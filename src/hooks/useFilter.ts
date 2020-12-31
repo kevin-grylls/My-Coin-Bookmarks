@@ -1,6 +1,5 @@
 import { STRINGS } from '../constants';
 import { useGlobalContext } from '../context';
-import { useLocation } from 'react-router-dom';
 
 export function useFilter() {
   const {
@@ -9,9 +8,6 @@ export function useFilter() {
     setDisplayRow,
     inc,
   } = useGlobalContext();
-  const { pathname } = useLocation();
-
-  const getPathName = (path: string) => pathname === path;
 
   const updateFilter = (value: string) => {
     switch (value) {

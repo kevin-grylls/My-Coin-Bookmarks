@@ -1,4 +1,7 @@
 export const ROUTES = Object.freeze({
-  TAB: ['/market', '/bookmark'],
+  HOME: '/',
+  CURRENCY: '/market',
+  BOOKMARK: '/bookmark',
   DETAILS: '/details',
+  TAB: ['/market', '/bookmark'],
 });

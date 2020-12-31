@@ -1,4 +1,12 @@
 export const STRINGS = Object.freeze({
+  DETAILS: {
+    RANK: '시가총액 Rank',
+    SITE: '웹사이트',
+    MARKET_CAP: '시가총액',
+    EXCHANGE_AMT_24: '거래대금',
+    CALCULATE_PRICE: '가격계산',
+    DESCRIPTION: '설명보기',
+  },
   TAB: ['가상자산 시세 목록', '북마크 목록'],
   FILTER: {
     VIEW_TYPE: ['전체보기', '북마크 보기'],

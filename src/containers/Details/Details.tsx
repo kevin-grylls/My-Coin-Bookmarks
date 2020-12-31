@@ -27,7 +27,7 @@ import {
   useToast,
 } from '../../hooks';
 
-export function Details() {
+export default function Details() {
   const { details, open, setOpen, currencyType }: any = useDetails(useParams());
   const { isLoading } = useLoading();
   const { isToast } = useToast();
@@ -80,8 +80,14 @@ export function Details() {
               className={'fa fa-star'}
               onClick={() => updateBookmark(id)}
             />
-            <img src={thumb} alt={'thumbnail'} />
-            {currencyName} ({symbol.toUpperCase()})
+            <img
+              src={
+                thumb ||
+                'https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png?1547033579'
+              }
+              alt={'thumbnail'}
+            />
+            {currencyName} {`(${symbol.toUpperCase()})`}
           </Title>
           <Select
             marginLeft={'auto'}
@@ -101,11 +107,11 @@ export function Details() {
             <Table>
               <tbody>
                 <tr>
-                  <th style={{ width: '20%' }}>시가총액 Rank</th>
-                  <td>Rank #{market_cap_rank}</td>
+                  <th style={{ width: '20%' }}>{STRINGS.DETAILS.RANK}</th>
+                  <td>{`Rank #${market_cap_rank}`}</td>
                 </tr>
                 <tr>
-                  <th>웹사이트</th>
+                  <th>{STRINGS.DETAILS.SITE}</th>
                   <td>{homepage[0]}</td>
                 </tr>
               </tbody>
@@ -151,7 +157,7 @@ export function Details() {
                 <div style={{ width: '25%', marginLeft: '25%' }}>
                   <div style={{ textAlign: 'right' }}>
                     <Text fontSize={'xs'} color={'black'}>
-                      시가 총액
+                      {STRINGS.DETAILS.MARKET_CAP}
                     </Text>
                   </div>
                   <div style={{ textAlign: 'right' }}>
@@ -165,7 +171,7 @@ export function Details() {
                 <div style={{ marginLeft: 'auto' }}>
                   <div style={{ textAlign: 'right' }}>
                     <Text fontSize={'xs'} color={'black'}>
-                      24시간 거래대금
+                      {STRINGS.DETAILS.EXCHANGE_AMT_24}
                     </Text>
                   </div>
                   <div style={{ textAlign: 'right' }}>
@@ -184,7 +190,7 @@ export function Details() {
         <Section>
           <CalculatorWrapper>
             <UtilityDiv>
-              <span>가격 계산</span>
+              <span>{STRINGS.DETAILS.CALCULATE_PRICE}</span>
             </UtilityDiv>
             <ContentWrapper>
               <div
@@ -246,7 +252,9 @@ export function Details() {
           </CalculatorWrapper>
         </Section>
         <Section>
-          <DescBtn onClick={() => setOpen(true)}>설명보기 &#9660;</DescBtn>
+          <DescBtn onClick={() => setOpen(true)}>
+            {STRINGS.DETAILS.DESCRIPTION} &#9660;
+          </DescBtn>
           {open && <DescContent>{currencyDesc}</DescContent>}
         </Section>
         {isLoading && <Spinner />}

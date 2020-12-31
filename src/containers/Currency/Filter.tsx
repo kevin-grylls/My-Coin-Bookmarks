@@ -9,7 +9,7 @@ export function Filter() {
   return (
     <FiltersWrapper>
       <Select
-        data-testid={'select-view-type'}
+        data-test-id={'select-view-type'}
         marginLeft={'auto'}
         onChange={(e: ChangeEvent<HTMLSelectElement>) =>
           updateFilter(e.target.value)
@@ -22,7 +22,7 @@ export function Filter() {
         ))}
       </Select>
       <Select
-        data-testid={'select-currency-type'}
+        data-test-id={'select-currency-type'}
         marginLeft={'40px'}
         onChange={(e: ChangeEvent<HTMLSelectElement>) =>
           updateFilter(e.target.value)
@@ -35,7 +35,7 @@ export function Filter() {
         ))}
       </Select>
       <Select
-        data-testid={'select-list-number'}
+        data-test-id={'select-list-number'}
         marginLeft={'40px'}
         onChange={(e: ChangeEvent<HTMLSelectElement>) =>
           updateFilter(e.target.value)

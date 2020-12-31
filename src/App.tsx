@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { ContextProvider } from './context';
 import { theme } from './styles';
 import { Home, Details } from './containers';
+import { ROUTES } from './constants';
 
 function App() {
   return (
@@ -11,10 +12,10 @@ function App() {
       <ContextProvider>
         <Router>
           <Switch>
-            <Route path={'/details/:id'}>
+            <Route path={`${ROUTES.DETAILS}/:id`}>
               <Details />
             </Route>
-            <Route path={['/', '/bookmark', '*']}>
+            <Route path={[`${ROUTES.HOME}`, `${ROUTES.BOOKMARK}`, '*']}>
               <Home />
             </Route>
           </Switch>

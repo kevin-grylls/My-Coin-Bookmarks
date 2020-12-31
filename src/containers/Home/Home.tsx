@@ -4,6 +4,7 @@ import { Layout, Wrapper, Section } from './Style';
 import { Tab } from './Tab';
 import { Spinner, Toast } from '../../components';
 import { useLoading, useToast } from '../../hooks';
+import { ROUTES } from '../../constants';
 
 const Currency = lazy(() => import('../Currency'));
 const Bookmark = lazy(() => import('../Bookmark'));
@@ -23,17 +24,17 @@ export const Home = () => {
         <main>
           <Section>
             <Switch>
-              <Route path="/market">
+              <Route path={`${ROUTES.CURRENCY}`}>
                 <Suspense fallback={<Spinner />}>
                   <Currency />
                 </Suspense>
               </Route>
-              <Route path="/bookmark">
+              <Route path={`${ROUTES.BOOKMARK}`}>
                 <Suspense fallback={<Spinner />}>
                   <Bookmark />
                 </Suspense>
               </Route>
-              <Redirect from={'/'} to={'/market'} />
+              <Redirect from={`${ROUTES.HOME}`} to={`${ROUTES.CURRENCY}`} />
             </Switch>
           </Section>
         </main>

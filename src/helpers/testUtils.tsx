@@ -8,3 +8,5 @@ export const renderComponent = (Component: React.FC) =>
       <Component />
     </ThemeProvider>,
   );
+
+export const getTestId = (id: string) => `[data-test-id="${id}"]`;
