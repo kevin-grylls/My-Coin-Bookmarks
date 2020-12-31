@@ -11,6 +11,7 @@ export function useCurrency() {
     displayRow,
     setPage,
     init,
+    updateCnt,
   } = useGlobalContext();
   const { loading } = useLoading();
   const [currency, setCurrency] = useState([]);
@@ -40,7 +41,7 @@ export function useCurrency() {
   useEffect(() => {
     loading();
     fetchMarketCurrencies('fetch');
-  }, [currencyType, displayRow]);
+  }, [updateCnt]);
 
   useEffect(() => {
     init();

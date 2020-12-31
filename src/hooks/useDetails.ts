@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getCurrencyDetails } from '../api';
+import { useGlobalContext } from '../context';
 import { useLoading } from './useLoading';
 
 type MarketData = {
@@ -41,6 +42,7 @@ type Details = {
 };
 
 export function useDetails({ id }: { id: string }) {
+  const { currencyType } = useGlobalContext();
   const { loading } = useLoading();
   const [open, setOpen] = useState(false);
   const [details, setDetails] = useState<Details>({
@@ -111,5 +113,5 @@ export function useDetails({ id }: { id: string }) {
     fetchCurrencyDetails(id);
   }, []);
 
-  return { details, open, setOpen };
+  return { details, open, setOpen, currencyType };
 }

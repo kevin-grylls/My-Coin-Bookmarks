@@ -101,6 +101,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
       return {
         ...prevState,
         displayRow: perPage,
+        updateCnt: prevState.updateCnt + 1,
       };
     });
   };

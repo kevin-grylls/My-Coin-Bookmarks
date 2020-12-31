@@ -17,18 +17,15 @@ import {
 } from './Style';
 import { STRINGS } from '../../constants';
 import { formatter } from '../../helpers';
-import { useCurrency, useDetails, useFilter, useLoading } from '../../hooks';
+import { useDetails, useFilter, useLoading } from '../../hooks';
 
 export function Details() {
-  const { details, open, setOpen }: any = useDetails(useParams());
+  const { details, open, setOpen, currencyType }: any = useDetails(useParams());
   const { isLoading } = useLoading();
   const { updateFilter } = useFilter();
-  const { currencyType } = useCurrency();
 
   const {
-    id,
     symbol,
-    name,
     market_cap_rank,
     market_data: {
       market_cap_change_percentage_24h,
@@ -46,12 +43,22 @@ export function Details() {
   console.log(details);
 
   const currencyMark = currencyType === 'usd' ? '$' : '₩';
-  const currencyName = localization.ko;
-  const priceChange24InCurrency = price_change_percentage_1h_in_currency.krw;
-  const currencyDesc = description.ko;
-  const totalVolume = total_volume.krw;
-  const marketCapChange24InCurrency = market_cap_change_24h_in_currency.krw;
-  const currentPrice = current_price.krw;
+  const currencyName =
+    currencyType === 'usd' ? localization.en : localization.ko;
+  const priceChange24InCurrency =
+    currencyType === 'usd'
+      ? price_change_percentage_1h_in_currency.usd
+      : price_change_percentage_1h_in_currency.krw;
+  const currencyDesc = currencyType === 'usd' ? description.en : description.ko;
+  const totalVolume =
+    currencyType === 'usd' ? total_volume.usd : total_volume.krw;
+  const marketCapChange24InCurrency =
+    currencyType === 'usd'
+      ? market_cap_change_24h_in_currency.usd
+      : market_cap_change_24h_in_currency.krw;
+  const marketCapPercent24 = market_cap_change_percentage_24h;
+  const currentPrice =
+    currencyType === 'usd' ? current_price.usd : current_price.krw;
 
   return (
     <Layout>
@@ -59,7 +66,7 @@ export function Details() {
         <FiltersWrapper>
           <Title>
             <Star className={'fa fa-star'} />
-            <img src={thumb} />
+            <img src={thumb} alt={'thumbnail'} />
             {currencyName} ({symbol.toUpperCase()})
           </Title>
           <Select
@@ -105,7 +112,7 @@ export function Details() {
                     </Text>
                   </div>
                 </div>
-                <div style={{ marginLeft: '10px', marginTop: '10px' }}>
+                <div style={{ marginLeft: '10px' }}>
                   <div>
                     <Text
                       color={
@@ -117,12 +124,11 @@ export function Details() {
                     </Text>
                   </div>
                   <div>
-                    <Text color={'red'} fontSize={'xxs'}>
-                      {formatter.getPercentFormat(
-                        market_cap_change_percentage_24h,
-                        1,
-                      )}
-                      %
+                    <Text
+                      color={Number(marketCapPercent24) > 0 ? 'red' : 'blue'}
+                      fontSize={'xxs'}
+                    >
+                      {formatter.getPercentFormat(marketCapPercent24, 1)}%
                     </Text>
                   </div>
                 </div>
