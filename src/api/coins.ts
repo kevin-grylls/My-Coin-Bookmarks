@@ -35,12 +35,16 @@ interface CurrencyDetails {
 }
 
 export const getCurrencyDetails = ({ id }: CurrencyDetails) => {
-  return fetch(`https://api.coingecko.com/api/v3/coins/${id}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
+  return fetch(
+    `https://api.coingecko.com/api/v3/coins/${id}?tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false
+  `,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  })
+  )
     .then((response) => response.json())
     .catch((error) => console.warn(error));
 };
