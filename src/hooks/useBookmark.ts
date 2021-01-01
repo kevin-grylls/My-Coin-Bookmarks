@@ -23,7 +23,7 @@ export function useBookmark() {
   useEffect(() => {
     loading();
     fetchMarketCurrencies();
-  }, [bookmark]);
+  }, [bookmark, fetchMarketCurrencies, loading]);
 
   return { favorites };
 }

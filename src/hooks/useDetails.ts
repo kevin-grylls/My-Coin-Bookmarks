@@ -109,7 +109,7 @@ export function useDetails({ id }: { id: string }) {
 
   useEffect(() => {
     fetchCurrencyDetails(id);
-  }, []);
+  }, [fetchCurrencyDetails, id]);
 
   return { details, open, setOpen, currencyType };
 }
