@@ -76,7 +76,6 @@ $ yarn cypress # e2e 테스트
   - jest
   - webpack
   - babel
-  - @types/*
   - @testing-library/*
   - web-vitals
   - etc
@@ -98,6 +97,9 @@ $ yarn cypress # e2e 테스트
   - cypress
 - Github Pages 통해 데모를 제공
   - gh-pages 
+- 폴리필 적용을 위해 설치 (IE 11)
+  - react-app-polyfill
+- @types/* : typescript definitions
 
 ## Demo
 [Demo](https://kevin-grylls.github.io/coin-chart/)
