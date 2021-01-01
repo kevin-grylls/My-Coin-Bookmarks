@@ -11,7 +11,6 @@ export function useCurrency() {
     displayRow,
     setPage,
     init,
-    updateCnt,
   } = useGlobalContext();
   const { loading } = useLoading();
   const [currency, setCurrency] = useState([]);
@@ -21,7 +20,7 @@ export function useCurrency() {
     setCurrency(currency.concat(result));
   };
 
-  const fetchMarketCurrencies = async (type: string) => {
+  const fetchMarketCurrencies = useCallback(async (type: string) => {
     const result = await getMarketCurrencies({
       vsCurrency: currencyType,
       order: 'market_cap_desc',
@@ -31,7 +30,7 @@ export function useCurrency() {
     });
 
     type === 'fetch' ? setCurrency(result) : updateCurrency(result);
-  };
+  });
 
   const loadMoreCurrency = () => {
     loading();
@@ -41,11 +40,11 @@ export function useCurrency() {
   useEffect(() => {
     loading();
     fetchMarketCurrencies('fetch');
-  }, [updateCnt]);
+  }, [displayRow, currencyType, loading, fetchMarketCurrencies]);
 
   useEffect(() => {
     init();
-  }, []);
+  }, [init]);
 
   return { currency, currencyType, loadMoreCurrency, viewType };
 }

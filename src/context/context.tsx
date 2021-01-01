@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import React, { createContext, ReactNode, useContext, useState } from 'react';
 
 interface GlobalContext {
   updateCnt: number;
@@ -110,13 +110,13 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
       return {
         ...prevState,
         displayRow: perPage,
-        updateCnt: prevState.updateCnt + 1,
       };
     });
   };
 
   const init = () => {
     setPage(1);
+    setViewType('all');
     setCurrencyType('krw');
     setDisplayRow(50);
   };
