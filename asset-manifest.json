@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.js": "/coin-chart/static/js/main.606493b1.chunk.js",
-    "main.js.map": "/coin-chart/static/js/main.606493b1.chunk.js.map",
-    "runtime-main.js": "/coin-chart/static/js/runtime-main.d00c13fa.js",
-    "runtime-main.js.map": "/coin-chart/static/js/runtime-main.d00c13fa.js.map",
-    "static/js/2.96a0bfcf.chunk.js": "/coin-chart/static/js/2.96a0bfcf.chunk.js",
-    "static/js/2.96a0bfcf.chunk.js.map": "/coin-chart/static/js/2.96a0bfcf.chunk.js.map",
-    "static/js/3.f1ee87f5.chunk.js": "/coin-chart/static/js/3.f1ee87f5.chunk.js",
-    "static/js/3.f1ee87f5.chunk.js.map": "/coin-chart/static/js/3.f1ee87f5.chunk.js.map",
-    "static/js/4.bd654192.chunk.js": "/coin-chart/static/js/4.bd654192.chunk.js",
-    "static/js/4.bd654192.chunk.js.map": "/coin-chart/static/js/4.bd654192.chunk.js.map",
-    "static/js/5.10745739.chunk.js": "/coin-chart/static/js/5.10745739.chunk.js",
-    "static/js/5.10745739.chunk.js.map": "/coin-chart/static/js/5.10745739.chunk.js.map",
+    "main.js": "/coin-chart/static/js/main.1e081955.chunk.js",
+    "main.js.map": "/coin-chart/static/js/main.1e081955.chunk.js.map",
+    "runtime-main.js": "/coin-chart/static/js/runtime-main.22ab71eb.js",
+    "runtime-main.js.map": "/coin-chart/static/js/runtime-main.22ab71eb.js.map",
+    "static/js/2.91611a53.chunk.js": "/coin-chart/static/js/2.91611a53.chunk.js",
+    "static/js/2.91611a53.chunk.js.map": "/coin-chart/static/js/2.91611a53.chunk.js.map",
+    "static/js/3.fc559687.chunk.js": "/coin-chart/static/js/3.fc559687.chunk.js",
+    "static/js/3.fc559687.chunk.js.map": "/coin-chart/static/js/3.fc559687.chunk.js.map",
+    "static/js/4.6bcb5695.chunk.js": "/coin-chart/static/js/4.6bcb5695.chunk.js",
+    "static/js/4.6bcb5695.chunk.js.map": "/coin-chart/static/js/4.6bcb5695.chunk.js.map",
+    "static/js/5.0d1eadf5.chunk.js": "/coin-chart/static/js/5.0d1eadf5.chunk.js",
+    "static/js/5.0d1eadf5.chunk.js.map": "/coin-chart/static/js/5.0d1eadf5.chunk.js.map",
     "index.html": "/coin-chart/index.html",
-    "precache-manifest.de38fd2371d691a8dd70964e32c363fa.js": "/coin-chart/precache-manifest.de38fd2371d691a8dd70964e32c363fa.js",
+    "precache-manifest.d6ddfd5d3ecacf4d0e1631207ef18267.js": "/coin-chart/precache-manifest.d6ddfd5d3ecacf4d0e1631207ef18267.js",
     "service-worker.js": "/coin-chart/service-worker.js",
-    "static/js/2.96a0bfcf.chunk.js.LICENSE.txt": "/coin-chart/static/js/2.96a0bfcf.chunk.js.LICENSE.txt"
+    "static/js/2.91611a53.chunk.js.LICENSE.txt": "/coin-chart/static/js/2.91611a53.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d00c13fa.js",
-    "static/js/2.96a0bfcf.chunk.js",
-    "static/js/main.606493b1.chunk.js"
+    "static/js/runtime-main.22ab71eb.js",
+    "static/js/2.91611a53.chunk.js",
+    "static/js/main.1e081955.chunk.js"
   ]
 }
