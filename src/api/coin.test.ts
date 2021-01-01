@@ -12,17 +12,17 @@ describe('getMarketCurrencies', () => {
 
   it('should return currency data', async () => {
     const result = await getMarketCurrencies(query);
-    expect(result.length).toBe(10);
+    expect(result).toHaveLength(10);
   });
 
   it('should have 20 data', async () => {
     const result = await getMarketCurrencies({ ...query, perPage: 20 });
-    expect(result.length).toBe(20);
+    expect(result).toHaveLength(20);
   });
 
   it('should return a single array', async () => {
     const result = await getMarketCurrencies({ ...query, ids: 'bitcoin' });
-    expect(result.length).toBe(1);
+    expect(result).toHaveLength(1);
   });
 
   it('should return on bitcoin and ethereum', async () => {
@@ -30,7 +30,7 @@ describe('getMarketCurrencies', () => {
       ...query,
       ids: 'bitcoin,ethereum',
     });
-    expect(result.length).toBe(2);
+    expect(result).toHaveLength(2);
   });
 });
 

@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 import { useBookmark } from './useBookmark';
 import { storage } from '../helpers';
 
@@ -18,6 +18,6 @@ describe('useBookmark', () => {
 
     await waitForNextUpdate();
 
-    expect(result.current.favorites.length).toBe(sample.length);
+    expect(result.current.favorites).toHaveLength(sample.length);
   });
 });

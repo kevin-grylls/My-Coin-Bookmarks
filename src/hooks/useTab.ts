@@ -5,8 +5,7 @@ export function useTab() {
   const { pathname } = useLocation();
 
   const isMatchedUrl = pathname === '/' || pathname === '/market';
-
-  const getIdx = useCallback(() => (isMatchedUrl ? 0 : 1));
+  const getIdx = () => (isMatchedUrl ? 0 : 1);
 
   const [tabIdx, setTabIdx] = useState(getIdx());
 
@@ -16,7 +15,7 @@ export function useTab() {
 
   useEffect(() => {
     updateTabIdx(getIdx());
-  }, [getIdx, tabIdx]);
+  }, [tabIdx]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { tabIdx, updateTabIdx };
 }

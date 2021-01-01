@@ -3,7 +3,7 @@ import { useLoading } from './useLoading';
 
 describe('useLoading', () => {
   it('should change 2 times when calling loading method', () => {
-    const { result, waitForValueToChange } = renderHook(useLoading);
+    const { result } = renderHook(useLoading);
     expect(result.current.isLoading).toBe(false);
   });
 });

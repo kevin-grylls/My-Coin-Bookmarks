@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useGlobalContext } from '../context';
 import { calculator } from '../helpers';
 
 export function useCalculator() {
-  const { currencyType } = useGlobalContext();
   const [result, setResult] = useState<{
     crypto: string;
     currency: string;
@@ -57,7 +55,7 @@ export function useCalculator() {
       crypto: '',
       currency: '',
     });
-  }, [currencyType]);
+  }, []);
 
   return { result, getCurrency, getCrypto };
 }

@@ -40,7 +40,7 @@ export function useStorage() {
 
   useEffect(() => {
     setBookmark(getMyFavorites());
-  }, [updateCnt]);
+  }, [updateCnt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { bookmark, updateBookmark };
 }

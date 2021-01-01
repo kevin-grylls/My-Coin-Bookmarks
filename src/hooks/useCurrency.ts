@@ -20,7 +20,8 @@ export function useCurrency() {
     setCurrency(currency.concat(result));
   };
 
-  const fetchMarketCurrencies = useCallback(async (type: string) => {
+  // eslint-disable-line react-hooks/exhaustive-deps
+  const fetchMarketCurrencies = async (type: string) => {
     const result = await getMarketCurrencies({
       vsCurrency: currencyType,
       order: 'market_cap_desc',
@@ -30,7 +31,7 @@ export function useCurrency() {
     });
 
     type === 'fetch' ? setCurrency(result) : updateCurrency(result);
-  });
+  };
 
   const loadMoreCurrency = () => {
     loading();
@@ -40,11 +41,11 @@ export function useCurrency() {
   useEffect(() => {
     loading();
     fetchMarketCurrencies('fetch');
-  }, [displayRow, currencyType, loading, fetchMarketCurrencies]);
+  }, [displayRow, currencyType]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     init();
-  }, [init]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { currency, currencyType, loadMoreCurrency, viewType };
 }

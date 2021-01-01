@@ -23,7 +23,7 @@ export function useBookmark() {
   useEffect(() => {
     loading();
     fetchMarketCurrencies();
-  }, [bookmark, fetchMarketCurrencies, loading]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { favorites };
 }

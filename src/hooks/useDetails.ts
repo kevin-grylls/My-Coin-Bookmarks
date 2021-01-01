@@ -109,7 +109,7 @@ export function useDetails({ id }: { id: string }) {
 
   useEffect(() => {
     fetchCurrencyDetails(id);
-  }, [fetchCurrencyDetails, id]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { details, open, setOpen, currencyType };
 }
