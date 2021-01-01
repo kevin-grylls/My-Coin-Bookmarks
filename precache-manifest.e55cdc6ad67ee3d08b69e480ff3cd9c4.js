@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "76ea0d5c348870c610a0f47240eac347",
+    "revision": "0916d52c40ebe8e9e0202577f88b7bf0",
     "url": "/coin-chart/index.html"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coin-chart/static/js/5.49e3dbef.chunk.js"
   },
   {
-    "revision": "e4157e933dbe8ad031c5",
-    "url": "/coin-chart/static/js/main.183ea39f.chunk.js"
+    "revision": "234f2c42c83950ff777c",
+    "url": "/coin-chart/static/js/main.4341aa22.chunk.js"
   },
   {
     "revision": "df04c5fa1a2ca1c82cc6",
