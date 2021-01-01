@@ -15,7 +15,7 @@ export function useTab() {
 
   useEffect(() => {
     updateTabIdx(getIdx());
-  }, [tabIdx]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { tabIdx, updateTabIdx };
 }
