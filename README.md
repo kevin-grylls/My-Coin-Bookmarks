@@ -100,6 +100,6 @@ $ yarn cypress # e2e 테스트
   - gh-pages 
 
 ## Demo
-[Demo]('https://kevin-grylls.github.io/coin-chart/')
+[Demo](https://kevin-grylls.github.io/coin-chart/)
 
 [(back to top)](##table-of-contents)
