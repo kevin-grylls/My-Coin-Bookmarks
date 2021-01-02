@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/coin-chart/static/js/main.72c7a831.chunk.js",
-    "main.js.map": "/coin-chart/static/js/main.72c7a831.chunk.js.map",
+    "main.js": "/coin-chart/static/js/main.d53113e6.chunk.js",
+    "main.js.map": "/coin-chart/static/js/main.d53113e6.chunk.js.map",
     "runtime-main.js": "/coin-chart/static/js/runtime-main.e2e7899c.js",
     "runtime-main.js.map": "/coin-chart/static/js/runtime-main.e2e7899c.js.map",
     "static/js/2.dfc32b4d.chunk.js": "/coin-chart/static/js/2.dfc32b4d.chunk.js",
@@ -13,13 +13,13 @@
     "static/js/5.0d1eadf5.chunk.js": "/coin-chart/static/js/5.0d1eadf5.chunk.js",
     "static/js/5.0d1eadf5.chunk.js.map": "/coin-chart/static/js/5.0d1eadf5.chunk.js.map",
     "index.html": "/coin-chart/index.html",
-    "precache-manifest.4183d6301c6326ee6d1575f56ea4f6c5.js": "/coin-chart/precache-manifest.4183d6301c6326ee6d1575f56ea4f6c5.js",
+    "precache-manifest.09134b88ae3d857d6b57702388b59725.js": "/coin-chart/precache-manifest.09134b88ae3d857d6b57702388b59725.js",
     "service-worker.js": "/coin-chart/service-worker.js",
     "static/js/2.dfc32b4d.chunk.js.LICENSE.txt": "/coin-chart/static/js/2.dfc32b4d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e2e7899c.js",
     "static/js/2.dfc32b4d.chunk.js",
-    "static/js/main.72c7a831.chunk.js"
+    "static/js/main.d53113e6.chunk.js"
   ]
 }
