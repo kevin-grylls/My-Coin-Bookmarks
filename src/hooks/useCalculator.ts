@@ -50,12 +50,16 @@ export function useCalculator() {
     });
   };
 
-  useEffect(() => {
+  const init = () => {
     setResult({
       crypto: '',
       currency: '',
     });
+  };
+
+  useEffect(() => {
+    init();
   }, []);
 
-  return { result, getCurrency, getCrypto };
+  return { result, getCurrency, getCrypto, init };
 }

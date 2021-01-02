@@ -34,7 +34,7 @@ export default function Details() {
   const { isToast } = useToast();
   const { updateFilter } = useFilter();
   const { bookmark, updateBookmark } = useStorage();
-  const { result, getCurrency, getCrypto } = useCalculator();
+  const { result, getCurrency, getCrypto, init } = useCalculator();
 
   const {
     id,
@@ -94,9 +94,10 @@ export default function Details() {
           <Select
             data-test-id={'details-currency-type-select'}
             marginLeft={'auto'}
-            onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-              updateFilter(e.target.value)
-            }
+            onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+              updateFilter(e.target.value);
+              init();
+            }}
           >
             {STRINGS.FILTER.CURRENCY.map((name: string) => (
               <option key={`view-type-${name}`} value={name}>
