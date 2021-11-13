@@ -102,6 +102,6 @@ $ yarn cypress # e2e 테스트
 - @types/* : typescript definitions
 
 ## Demo
-[Demo](https://kevin-grylls.github.io/coin-chart/)
+[Demo](https://kevin-grylls.github.io/my-coin-bookmarks/)
 
 [(back to top)](##table-of-contents)

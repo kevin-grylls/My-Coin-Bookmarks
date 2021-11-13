@@ -1,7 +1,7 @@
 {
-  "name": "coin-chart",
+  "name": "my-coin-bookmarks",
   "version": "1.2.1",
-  "homepage": "https://kevin-grylls.github.io/coin-chart",
+  "homepage": "https://kevin-grylls.github.io/my-coin-bookmarks/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
